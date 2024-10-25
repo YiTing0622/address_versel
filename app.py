@@ -5,6 +5,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from urllib.parse import quote
 from pymongo.mongo_client import MongoClient
+from dotenv import load_dotenv
 import requests
 import xml.etree.ElementTree as ET
 import json
@@ -18,9 +19,10 @@ import webbrowser
 import re
 from openai import OpenAI
 import pandas as pd
+load_dotenv()
 app = FastAPI()
 
-API_KEY = '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'
+API_KEY = os.getenv("API_KEY")
 
 class AddressInput(BaseModel):
     address: str
