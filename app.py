@@ -23,11 +23,13 @@ load_dotenv()
 app = FastAPI()
 
 API_KEY = os.getenv("API_KEY")
+MONGO_USER = os.getenv("MONGO_USER")
+MONGO_PASSWORD = os.getenv("MONGO_PASSWORD")
 
 class AddressInput(BaseModel):
     address: str
 
-uri = "mongodb+srv://new_user:QtFm#q7C.TKywwj@cluster0.j1ypizq.mongodb.net/?retryWrites=true&w=majority"
+uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASSWORD}@cluster0.j1ypizq.mongodb.net/?retryWrites=true&w=majority"
     # Create a new client and connect to the server
 client = MongoClient(uri)
     # Send a ping to confirm a successful connection
